@@ -1,87 +1,67 @@
-/**
-This project demonstrates how to create MCP serer and connect to Claud.ai & Splunk 
-*/
+Splunk FastMCP – POC with Claude.ai
 
-Step 1:
+This project is a Proof of Concept (POC) demonstrating how to create an MCP server and connect it to Claude.ai and Splunk.
 
-Install Python
+🧩 Prerequisites
 
+macOS or Linux environment
+
+Python 3
+installed
+
+Access to your enterprise Splunk instance (with API token & URL)
+
+⚙️ Step 1: Install Python
 brew install python3
 
-
-
-Installing UV :
-
+⚡ Step 2: Install UV
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
+📁 Step 3: Create a Project Folder
 
-Step 2 :
+Create a local folder for your project:
 
-Create Project folder in your local. “splunk-fastmcp”
+mkdir splunk-fastmcp
+cd splunk-fastmcp
 
+🔐 Step 4: Get Splunk Credentials
 
+Obtain your Splunk API Token and Splunk URL from your Enterprise OPS Team.
 
-Step 3:
+📦 Step 5: Install Dependencies
 
-Get a Splunk API token & URL from your enterprise OPS team
+Choose one of the following methods to install dependencies:
 
-
-
-Step 4: Run below command in terminal
-
-# install deps (choose ONE of the three)
-
-# a) UV (fast)
-
+Option A: Using UV (recommended)
 pip install uv && uv sync
 
+🌍 Step 6: Set Environment Variables
 
-
-Step 5:
-
-# API port is different then the one which we use for the Frontend App.
+Set up the Splunk configuration in your terminal:
 
 export SPLUNK_HOST="prd-xxxxx.splunkcloud.com"
-
 export SPLUNK_PORT="8089"
-
 export SPLUNK_TOKEN="YOUR_TOKEN"      # preferred over username/password
-
 export VERIFY_SSL="true"
 
+🧠 Step 7: Add and Run the Server
 
-
-Step 6:
-
-Add attached server.py into your project folder. Please adapt variables.
-
-
-
-Step 7:
-
-Run this command, Adapt the URI
-
-
+Add the provided server.py file into your project folder.
+Adapt the variable values as needed, then run the following command (adjust the path as per your setup):
 
 /Users/umangparekh/Documents/splunkMCP/splunk-fastmcp/.venv/bin/python3 server.py
 
 
+If successful, you’ll see a confirmation message that FastMCP has started.
 
+🧩 Step 8: Verify the MCP Server
 
-
-This displays if fastMCP is started.
-
-
-
-
-Step 8:
-
-Verify if MCP is up or not using MCP Inspector
-
-
+Use the MCP Inspector to check if your MCP server is running correctly:
 
 npx @modelcontextprotocol/inspector \
-
 /Users/umangparekh/Documents/splunkMCP/splunk-fastmcp/.venv/bin/python3 \
-
 /Users/umangparekh/Documents/splunkMCP/splunk-fastmcp/server.py
+
+✅ Summary
+
+After completing these steps, your MCP Server should be successfully connected to Claude.ai and Splunk, enabling you to query and interact with your enterprise data securely.
